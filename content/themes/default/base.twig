@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ seo_description }}">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT"/>
+    <link rel="stylesheet" href="{{theme_path}}/assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://kit.fontawesome.com/d3f070bd79.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+    <script type="text/javascript" src="{{theme_path}}/assets/javascript/main.js?13:41"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="wrapper">
+    {% include 'header.twig' %}
+    <main class="main">
+    {% block content %}
+    {% endblock %}
+    </main>
+    {% include 'footer.twig' %}
+</div>
+
+
+<!-- JS -->
+
+<script>
+    new ClipboardJS('.btn-begin');
+</script>
+
+</body>
+</html>
+
+

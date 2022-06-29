@@ -1,0 +1,12 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer__info">{{ language.footer_text|raw }}</div>
+        <div class="footer__nav">
+            <ul>
+                {% for link in footer_nav %}
+                    <li><a href="{{ link.url }}" class="footer__nav-link">{{ link.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</footer>

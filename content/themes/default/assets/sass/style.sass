@@ -1,0 +1,488 @@
+@import "fonts"
+
+*
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	font-family: Poppins, sans-serif
+
+body
+	min-height: 100vh
+	background: linear-gradient(117.15deg, rgba(81, 83, 109, 0.2) -2.29%, rgba(0, 0, 0, 0) 101.86%), #1A1B26
+
+.wrapper
+	width: 100%
+	min-height: 100vh
+	display: table
+
+.container
+	max-width: 1100px
+	margin: 0 auto
+
+.btn
+	text-align: center
+	padding: 12px 16px
+	border-radius: 3px
+	border: unset
+	background-color: #F26822
+	font-size: 14px
+	color: #fff
+	cursor: pointer
+	font-weight: 500
+	transition: box-shadow .2s ease
+	> i
+		margin-right: 9px
+	&:hover
+		box-shadow: 0px 0px 9px #F26822
+
+.title
+	> h1
+		color: #fff
+		font-size: 32px
+		font-weight: 700
+	> span
+		display: block
+		width: 84px
+		height: 9px
+		background-color: #F26822
+
+.popup
+	display: none
+	&__background
+		position: fixed
+		width: 100%
+		height: 100%
+		background-color: #000
+		top: 0
+		right: 0
+		opacity: 60%
+		z-index: 9999
+	&__content
+		position: fixed
+		top: 50%
+		left: 50%
+		margin-right: -50%
+		transform: translate(-50%, -50%)
+		background-color: #292A39
+		max-width: 730px
+		width: 100%
+		min-height: 494px
+		border-radius: 3px
+		padding: 32px 95px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		z-index: 99999
+	&__title
+		text-align: center
+		font-size: 24px
+		color: #fff
+		> strong
+			font-weight: 700
+			color: #f26822
+	&__field
+		margin-bottom: 22px
+		&:last-child
+			margin-bottom: 0
+		&-name
+			font-size: 24px
+			font-weight: 500
+			color: #fff
+			margin-bottom: 3px
+		&-input
+			width: 100%
+			> input
+				width: 100%
+				height: 37px
+				border-radius: 3px
+				border: unset
+				color: #fff
+				background-color: #1D1E28
+				outline: none
+				padding: 9px
+	&__close
+		position: absolute
+		font-size: 20px
+		width: 14px
+		height: 14px
+		color: #F26822
+		border-radius: 50%
+		top: 15px
+		right: 15px
+		cursor: pointer
+
+
+.logo
+	max-width: 100px
+	> a
+		> img
+			max-width: 100%
+
+.header
+	width: 100%
+	padding-top: 20px
+	margin-bottom: 51px
+	> .container
+		width: 100%
+		height: 100%
+		display: flex
+		justify-content: space-between
+		align-items: center
+	&__nav
+		> ul
+			display: flex
+			align-items: center
+			> li
+				list-style: none
+				margin-right: 24px
+				font-size: 18px
+				opacity: 0.4
+				transition: opacity .2s ease
+				&:last-child
+					margin-right: 0
+				&.logo, &.active
+					opacity: 1
+				&:hover
+					opacity: 1
+				> a 
+					text-decoration: none
+					color: #fff
+
+.burger
+	display: none
+	position: absolute
+
+.main
+	display: table-row
+	height: 100%
+
+.filters
+	margin-bottom: 60px
+	.title
+		margin-bottom: 25px
+	&__wrap
+		> ul
+			display: flex
+			flex-wrap: wrap
+			> li
+				list-style: none
+				margin-right: 12px
+				margin-bottom: 12px
+				background-color: #292A39
+				padding: 8px 23px
+				border-radius: 3px
+				font-weight: 500
+				color: #fff
+				cursor: pointer
+				transition: background-color .2s ease
+				&.active
+					background-color: #f26822
+				&:last-child
+					margin-right: 0
+
+.products
+	margin-bottom: 40px
+	> .container
+		overflow: hidden
+	&__wrap
+		display: flex
+		flex-wrap: wrap
+		margin: 0  -17.5px
+	&__product
+		width: calc(100% / 12 * 3 - 35px)
+		margin: 17.5px
+		height: 120px
+		background-color: #292A39
+		border-radius: 3px
+		display: flex
+		align-items: center
+		padding: 0 18px
+		justify-content: left
+		position: relative
+		cursor: pointer
+		border: 2px solid #292A39
+		transition: border-color .2s ease
+		&-img
+			max-width: 75px
+			margin-right: 15px
+			> img
+				max-width: 100%
+		&-name
+			color: #fff
+			font-size: 16px
+			font-weight: 700
+		&-price
+			color: #f26822
+			position: absolute
+			right: 12px
+			bottom: 5px
+			font-size: 16px
+			opacity: 0.4
+			transition: opacity .2s ease
+		&:hover
+			border-color: #F26822
+			.products__product-price
+				opacity: 1
+
+.info
+	> .container
+		display: flex
+	&__server
+		max-width: 350px
+		width: 100%
+		height: 210px
+		padding: 12px 18px
+		background-color: #292A39
+		border-radius: 3px
+		margin-right: 12px
+		> .title
+			margin-bottom: 11px
+		color: #fff
+		font-weight: 200
+		&-status
+			> span
+				font-weight: 500
+				color: #f26822
+				position: relative
+				&:after
+					display: block
+					content: ''
+					width: 4px
+					height: 4px
+					position: absolute
+					right: -5px
+					top: 0
+					background-color: #f26822
+					border-radius: 50%
+		&-players
+			margin-bottom: 4px
+		&-progress
+			width: 100%
+			height: 3px
+			background-color: #21222F
+			border-radius: 3px
+			outline: none
+			position: relative
+			margin-bottom: 23px
+			> span
+				display: block
+				width: 2%
+				height: 100%
+				border-radius: 3px
+				background-color: #f26822
+			> p
+				font-size: 11px
+				color: #3a3b50
+				position: absolute
+				right: 0
+		&-btn
+			width: 100%
+	&__purchases
+		width: 100%
+		padding: 12px 18px
+		height: 210px
+		background-color: #292A39
+		border-radius: 3px
+		> .title
+			margin-bottom: 4px
+		&-wrap
+			display: flex
+
+.purchase
+	max-width: 160px
+	width: 100%
+	height: 133px
+	background-color: #2e2f3e
+	margin-right: 30px
+	text-align: center
+	border-radius: 3px
+	padding: 12px 0
+	display: flex
+	flex-direction: column
+	justify-content: center
+	&__img
+		max-width: 56px
+		margin: 0 auto
+		> img
+			max-width: 100%
+	&__nickname
+		font-size: 12px
+		color: #fff
+		font-weight: 500
+	&__product
+		color: #fff
+		font-weight: 200
+		font-size: 11px
+		color: #f26822
+
+.footer
+	
+	> .container
+		display: flex
+		justify-content: space-between
+		align-items: center
+		min-height: 100px
+	&__info
+		max-width: 275px
+		font-size: 10px
+		color: #40425e
+		font-weight: 200
+		> strong
+			color: #f26822
+			font-weight: 200
+	&__nav
+		> ul
+			display: flex
+			> li
+				font-size: 10px
+				margin-right: 15px
+				list-style: none
+				> a
+					color: #f26822
+
+
+@media screen and (max-width: 1100px)
+	.container
+		padding: 0 15px
+	.products
+		&__product
+			width: calc(100% / 12 * 4 - 35px)
+	.info
+		> .container
+			flex-direction: column
+			> div
+				margin-bottom: 35px
+				&:last-child
+					margin-bottom: 0
+	.info__server
+		max-width: 100%
+
+@media screen and (max-width: 855px)
+	.products
+		&__product
+			width: calc(100% / 12 * 6 - 35px)
+			&-name
+				font-size: 15px
+	.footer
+		> .container
+			flex-direction: column
+			align-items: flex-start
+			justify-content: center
+			> div
+				margin-bottom: 15px
+				&:last-child
+					margin-bottom: 0
+
+@media screen and (max-width: 768px)
+
+	.popup
+		&__content
+			min-height: 400px
+
+	.wrapper
+		padding-top: 100px
+
+	.header
+		top: 0
+		position: fixed
+		z-index: 9999
+		padding-top: 0
+		height: 90px
+		> .container
+			flex-direction: column
+			background: linear-gradient(117.15deg, rgba(81, 83, 109, 0.2) -2.29%, rgba(0, 0, 0, 0) 101.86%), #1A1B26
+		&__nav
+			> ul
+				flex-direction: column
+				> li
+					margin-right: 0
+					margin-bottom: 15px
+					font-size: 25px
+	.burger
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		width: 50px
+		height: 30px
+		right: 30px
+		top: 30px
+		&:before
+			position: relative
+			display: block
+			width: 100%
+			height: 5px
+			background-color: #F26822
+			content: ''
+			border-radius: 3px
+			transition: transform .2s ease
+		&:after
+			position: relative
+			display: block
+			width: 100%
+			height: 5px
+			background-color: #F26822
+			content: ''
+			border-radius: 3px
+		> span
+			position: relative
+			display: block
+			width: 100%
+			height: 5px
+			background-color: #F26822
+			content: ''
+			border-radius: 3px
+			transition: transform .2s ease
+	.burger.active
+		&:before
+			transform: rotate(45deg)
+			top: 12px
+		&:after
+			display: none
+		> span
+			transform: rotate(-45deg)
+			top: -12px
+
+	.header
+		transition: height .2s ease
+		&__nav
+			display: none
+		&__button
+			display: none
+
+	.header.active
+		height: 100vh
+		> .container
+			justify-content: center
+		.header__nav
+			display: block
+		.header__button
+			display: block
+
+@media screen and (max-width: 730px)
+	.popup
+		&__content
+			padding: 32px 15px
+			width: 93%
+
+@media screen and (max-width: 545px)
+	.products
+		&__product
+			width: calc(100% / 12 * 12 - 35px)
+	.footer
+		&__nav
+			> ul
+				flex-direction: column
+				> li
+					margin-right: 0
+					margin-bottom: 5px
+	.info__purchases
+		min-height: 200px
+		height: auto
+		&-wrap
+			flex-direction: column
+	.purchase
+		max-width: 100%
+		margin-right: 0
+		margin-bottom: 15px
+	.info
+		margin-bottom: 15px

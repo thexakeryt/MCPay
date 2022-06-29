@@ -1,0 +1,13 @@
+<div class="products">
+    <div class="container">
+        <div class="products__wrap">
+            {% for product in products %}
+                <div class="products__product {{ language.active_filter_text }} {{ product.category }}">
+                    <div class="products__product-img"><img src="{{theme_path}}/assets/img/{{ product.logo }}" alt=""></div>
+                    <div class="products__product-name">{{ product.name }}</div>
+                    <div class="products__product-price">{{ product.price }} €</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

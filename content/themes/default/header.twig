@@ -1,0 +1,17 @@
+
+<header class="header">
+    <div class="container">
+        <div class="burger">
+            <span></span>
+        </div>
+        <div class="header__nav">
+            <ul>
+                <li class="header__nav-link logo"><a href="/"><img src="{{ site_logo }}" alt=""></a></li>
+                {% for link in header_nav %}
+                    <li class="header__nav-link"><a href="{{ link.url }}">{{ link.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% include 'button.twig' %}
+    </div>
+</header>

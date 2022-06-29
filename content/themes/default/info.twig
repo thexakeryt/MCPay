@@ -1,0 +1,31 @@
+<div class="info">
+    <div class="container">
+        <div class="info__server">
+            <div class="title">
+                <h1>{{ server_name }}</h1>
+            </div>
+            <div class="info__server-status">{{ language.info_status_title }}: <span>{{ server_status }}</span></div>
+            <div class="info__server-ip">{{ language.info_ip_title }}: <span>{{ server_ip }}</span></div>
+            <div class="info__server-players">{{ language.info_players_title }}: <span>{{ server_players.online }}</span></div>
+            <div class="info__server-progress">
+                <span></span>
+                <p>{{ language.info_max_title }}: <span>{{ server_players.max }}</span></p>
+            </div>
+            {% include 'button.twig' %}
+        </div>
+        <div class="info__purchases">
+            <div class="title">
+                <h1>{{ language.purchases_title }}</h1>
+            </div>
+            <div class="info__purchases-wrap">
+                {% for purchase in purchases %}
+                    <div class="purchase">
+                        <div class="purchase__img"><img src="https://mc-heads.net/avatar/{{ purchase.player }}" alt=""></div>
+                        <div class="purchase__nickname">{{ purchase.player }}</div>
+                        <div class="purchase__product">{{ purchase.item_name }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
