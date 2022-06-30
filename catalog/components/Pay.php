@@ -6,14 +6,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/catalog/classes/Paypal.php';
 $item = trim(htmlspecialchars($_POST['item']));
 $nickname = trim(htmlspecialchars($_POST['nickname']));
 
-if (!empty($item) && !empty($nickname)) {
+if (!empty($item) && !empty($nickname) && preg_match('/^\w{3,16}$/i', $nickname)) {
     $stmt = $dbh->prepare("SELECT * FROM `products` WHERE `name` = ?");
     $stmt->execute([$item]);
     $item = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $paypal = new Paypal($currency, $dbh);
     $paypal->newShop($client_id, $secret);
-    $paypal->setReturnUrl('https://lammer-store.fun/');
+    $paypal->setReturnUrl($return_url);
     $result = $paypal->createOrder(floatval($item[0]['price']));
 
     if ($result->status == 'CREATED') {
@@ -37,7 +37,7 @@ if (!empty($item) && !empty($nickname)) {
 
 
 } else {
-    echo 'Error: Enter your server\'s login';
+    echo 'Error: Incorrect server\'s login';
 }
 
 ?>

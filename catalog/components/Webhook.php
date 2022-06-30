@@ -13,7 +13,7 @@ $txn_id = $raw_data_input->resource->id;
 $stmt = $dbh->query("SELECT * FROM `purchases` WHERE `txn_id` = '$txn_id'");
 $item = $stmt->fetchAll();
 
-if ($raw_data_input->event_type == 'CHECKOUT.ORDER.APPROVED' && $item[0]['txn_id'] == $txn_id && floatval($item[0]['payment_amount']) == $raw_data_input->resource->purchase_units[0]->amount->value) {
+if ($raw_data_input->event_type == 'CHECKOUT.ORDER.APPROVED' && $item[0]['txn_id'] == $txn_id && floatval($item[0]['payment_amount']) == $raw_data_input->resource->purchase_units[0]->amount->value && preg_match('/^\w{3,16}$/i', $item[0]['player'])) {
 
     $item_name = $item[0]['item_name'];
     $stmt3 = $dbh->query("SELECT * FROM `products` WHERE `name` = '$item_name'");
@@ -25,6 +25,7 @@ if ($raw_data_input->event_type == 'CHECKOUT.ORDER.APPROVED' && $item[0]['txn_id
 
     if ($rcon->connect()) {
         $rcon->sendCommand($command);
+        $rcon->sendCommand('say Игроку ' . $item[0]['player'] . ' выданно');
     }
 
     $query = "UPDATE `purchases` SET `payment_status` = :payment_status WHERE `txn_id` = :id";

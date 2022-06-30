@@ -26,3 +26,4 @@ $currency = 'EUR';
 $paypal_email = 'koistex@gmail.com';
 $client_id = 'client_id';
 $secret = 'secret_key';
+$return_url = 'https://example.com';
