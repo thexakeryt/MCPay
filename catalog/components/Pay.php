@@ -5,16 +5,30 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/catalog/classes/Paypal.php';
 
 $item = trim(htmlspecialchars($_POST['item']));
 $nickname = trim(htmlspecialchars($_POST['nickname']));
+$promo = trim(htmlspecialchars($_POST['promo']));
 
+if (!empty($promo)) {
+    $stmt3 = $dbh->prepare("SELECT * FROM `promos` WHERE `name` = ?");
+    $stmt3->execute([$promo]);
+    $promo = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($promo[0]['percent'] == '') {
+        echo 'Error: Incorrect promo code';
+        return;
+    }
+}
+-
 if (!empty($item) && !empty($nickname) && preg_match('/^\w{3,16}$/i', $nickname)) {
     $stmt = $dbh->prepare("SELECT * FROM `products` WHERE `name` = ?");
     $stmt->execute([$item]);
     $item = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $price = $item[0]['price'] - ($promo[0]['percent'] * $item[0]['price']) / 100;
+
     $paypal = new Paypal($currency, $dbh);
     $paypal->newShop($client_id, $secret);
     $paypal->setReturnUrl($return_url);
-    $result = $paypal->createOrder(floatval($item[0]['price']));
+    $result = $paypal->createOrder(floatval($price));
 
     if ($result->status == 'CREATED') {
         $params = [
