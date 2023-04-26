@@ -23,7 +23,7 @@ $dbh = new PDO("mysql:host={$db_host};dbname={$db_name}", $db_user, $db_password
 // Shop settings & paypal
 $payment_sytem = 'paypal';
 $currency = 'EUR';
-$paypal_email = 'koistex@gmail.com';
+$paypal_email = '';
 $client_id = 'client_id';
 $secret = 'secret_key';
 $return_url = 'https://example.com';
